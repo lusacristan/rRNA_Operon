@@ -1,0 +1,14 @@
+library(ggplot2)
+
+
+read_lengths <- read.table("/home/bcem2022/Documents/dist_plots/read_lengths.txt", header = FALSE)
+colnames(read_lengths) <- c("Length")
+
+filtered_lengths <- subset(read_lengths, Length < 5000)
+
+ggplot(filtered_lengths, aes(x = Length)) +
+  geom_histogram(binwidth = 10, fill = "pink", color = "pink") +
+  labs(title = "Distribución de tamaños unknown ",
+       x = "Longitud de los reads",
+       y = "Frecuencia") +
+  theme_minimal()
